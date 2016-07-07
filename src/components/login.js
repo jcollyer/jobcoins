@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import LoginForm from './login-form'
 
 export default class Login extends Component {
-
+  handleSubmit(stateData) {
+    debugger;
+  }
   render() {
     return (
-      <p>
-        hi
-      </p>
+      <div id="login">
+        <LoginForm onSubmit={this.handleSubmit.bind(this)} />
+      </div>
     )
   }
 }
