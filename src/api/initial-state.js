@@ -1,1 +1,5 @@
-export const initialState = "hi test"
+export const initialState = {
+  address: "",
+	balance: 0,
+  transactions: []
+}
