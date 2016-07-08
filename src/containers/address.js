@@ -21,16 +21,13 @@ const Address = React.createClass({
     request
       .get('http://jobcoin.projecticeland.net/fish-sticks/api/addresses/'+address)
       .end(function(err, res){
-        debugger;
         that.props.setAddressData(res.body)
       });
   },
   render() {
     const { address, balance, transactions } = this.props
-    if(balance === 0){
-      debugger;
-      this.getAddressAjax(address)
-    }
+    if (balance === 0) this.getAddressAjax(address)
+
     return (
       <div>
         <p>hi - address page!</p>
@@ -44,7 +41,7 @@ const Address = React.createClass({
 
 const mapStateToProps = (appState) => {
   return {
-    address: appState.address.address,
+    address: window.location.href.split("/").slice(-1)[0].split("?")[0] || "",
     balance: appState.address.balance,
     transactions: appState.address.transactions
   }
