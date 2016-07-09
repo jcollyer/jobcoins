@@ -8,10 +8,10 @@ class AddressForm extends Component {
       <div id="send-jobcoin">
         <h3>Send Jobcoin</h3>
         <form onSubmit={handleSubmit}>
-          <label>Destination Address</label>
+          <p>Destination Address</p>
           <input type="text" {...address} />
-          <label>Amount to Send</label>
-          <input type="number" {...amount} />
+          <p>Amount to Send</p>
+          <span>$ <input type="number" {...amount} /></span>
           <button type="submit">Send Jobcoins</button>
         </form>
       </div>

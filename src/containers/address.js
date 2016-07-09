@@ -3,8 +3,10 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import request from 'superagent'
 import { setAddressData } from '../actions/address'
-import AddressForm from '../components/address-form'
+import SendForm from '../components/send-form'
 import Transactions from '../components/transactions'
+import AddressBalance from '../components/address-balance'
+
 
 const Address = React.createClass({
   handleSubmit(stateData) {
@@ -36,12 +38,12 @@ const Address = React.createClass({
     return (
       <div>
         <div id="address-header">
-          <button onClick={() => this.goHome()}>Home</button>
+          <div id="logo" onClick={() => this.goHome()}>Job</div>
           <button onClick={() => this.goHome()}>Logout</button>
         </div>
         <div id="side-bar">
-          <p>balance = { balance }</p>
-          <AddressForm onSubmit={this.handleSubmit.bind(this)} />
+          <AddressBalance balance={balance} />
+          <SendForm onSubmit={this.handleSubmit.bind(this)} />
         </div>
         <Transactions transactions={ transactions } equalizer={equalizer} address={address} />
       </div>

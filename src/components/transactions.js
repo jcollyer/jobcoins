@@ -40,7 +40,7 @@ const Transactions = React.createClass({
               <div className="t-amount">
                 <span>{transaction.amount}</span>
               </div>
-              <div className="t-to" style={toStyles}>{transaction.toAddress}</div>
+              <div className="t-to" style={toStyles}><b>To - </b>{transaction.toAddress}</div>
               <div className="t-date" style={dateStyles}>
                 <p>{transaction.timestamp.replace(/-/g,"/").substr(5,11).split("T")[0]}</p>
                 <p><b>{transaction.timestamp.replace(/-/g,"/").substr(5,11).split("T")[1]}</b></p>

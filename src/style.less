@@ -1,26 +1,100 @@
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:400,300|Pacifico);
+@gray: #ccc;
+@gray-dark: #aaa;
+@gray-deep: #888;
+@blue: #3D8EB9;
+
 body {
+  font-family: 'Josefin Sans', sans-serif;
   margin: 0px;
 }
 
-p {
+p, h2, h3 {
   margin: 0px;
   text-align: center;
 }
 
+button, input {
+  border: none;
+  cursor: pointer;
+}
+
 #address-header {
-  position: fixed;
-  top: 0px;
-  width: 100%;
+  #logo {
+    background: @blue;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    font-family: 'Pacifico', cursive;
+    font-size: 29px;
+    line-height: 50px;
+    margin: 2px 3px;
+    height: 55px;
+    text-shadow: 1px 0px 0px @blue;
+    transform: rotate(-20deg);
+    width: 55px;
+  }
+  button {
+    background: @blue;
+    color: white;
+    right: 10px;
+    top: 6px;
+    padding: 16px;
+    position: absolute;
+  }
+  background: #fff;
+  border-bottom: 1px solid @gray;
   height: 60px;
-  background: #333;
+  top: 0px;
+  position: fixed;
+  width: 100%;
+  z-index: 9;
 }
 
 #side-bar {
-  background: #ddd;
-  border-right: 1px solid;
-  float: left;
+  box-shadow: 1px 0px 4px @gray-dark;
   height: 100vh;
+  margin-top: 60px;
   width: 200px;
+  position: fixed;
+  #address-balance {
+    background: @gray-dark;
+    color: white;
+    margin: 5px auto;
+    padding: 30px 5px;
+    width: 90%;
+    h2 {
+      margin-top: 5px;
+    }
+  }
+  #send-jobcoin {
+    border-bottom: 1px solid @gray;
+    border-top: 1px solid @gray;
+    text-align: center;
+    padding: 20px 0px;
+    h3, p {
+      color: @gray-deep;
+    }
+    span {
+      color: @gray-dark;
+      input[type="number"] {
+        width: 165px;
+      }
+    }
+    input[type="text"], input[type="number"] {
+      border: 1px solid @gray;
+      border-radius: 2px;
+      margin: 2px 0px 10px;
+      height: 24px;
+      width: 180px;
+    }
+    button {
+      background: @blue;
+      color: white;
+      padding: 10px;
+      width: 180px;
+    }
+  }
 }
 
 #transactions {
@@ -28,13 +102,13 @@ p {
   animation-iteration-count: 1;
   animation-timing-function: ease-out;
   animation-duration: 0.6s;
-  bottom: 0px;
   float: left;
   height: 400px;
-  margin: 0px auto;
   overflow: scroll;
-  position: relative;
-  width: ~"calc(100% - 210px)";
+  position: absolute;
+  right: 10px;
+  top: 0px;
+  width: ~"calc(99% - 210px)";
   .transaction {
     position: absolute;
     width: 35px;
@@ -46,13 +120,15 @@ p {
     .t-amount {
       background: inherit;
       border-radius: 50%;
+      font-size: 11px;
       height: 15px;
       margin: auto;
       position: absolute;
-      right: -2px;
-      top: -2px;
+      right: -6px;
+      top: 0px;
       width: 15px;
       span {
+        color: @gray-deep;
         left: 20px;
         opacity: 1;
         position: absolute;
@@ -78,21 +154,22 @@ p {
       bottom: -30px;
       color: white;
       font-size: 12px;
-      padding: 2px 0px;
-      background: #aaa;
+      padding: 3px 0px;
+      background: @gray-dark;
       width: 35px;
     }
   }
   #base-line {
-    border-bottom: 1px solid;
+    border-bottom: 1px solid @gray-dark;
     bottom: 0px;
     position: absolute;
     width: 100%;
   }
   #scroll-to {
+    bottom: 0px;
+    height: 3px;
     position: absolute;
     width: 30px;
-    height: 3px;
   }
 }
 
