@@ -13,7 +13,7 @@ const Address = React.createClass({
       .post('http://jobcoin.projecticeland.net/fish-sticks/api/transactions')
       .send({ fromAddress: this.props.address, toAddress: stateData.address, amount: stateData.amount})
       .end(function(err, res){
-        that.getTransactions()
+        // that.getAddressAjax(this.props.address)
       });
   },
   getAddressAjax(address) {
@@ -24,16 +24,21 @@ const Address = React.createClass({
         that.props.setAddressData(res.body)
       });
   },
+  goHome() {
+    this.props.router.goBack();
+  },
   render() {
-    const { address, balance, transactions } = this.props
+    const { address, balance, transactions, equalizer } = this.props
     if (balance === 0) this.getAddressAjax(address)
 
     return (
       <div>
         <p>hi - address page!</p>
+        <button onClick={() => this.goHome()}>Home</button>
+        <button onClick={() => this.goHome()}>Logout</button>
         <p>balance = { balance }</p>
         <AddressForm onSubmit={this.handleSubmit.bind(this)} />
-        <Transactions transactions={ transactions } />
+        <Transactions transactions={ transactions } equalizer={equalizer} />
       </div>
     )
   }
@@ -43,7 +48,8 @@ const mapStateToProps = (appState) => {
   return {
     address: window.location.href.split("/").slice(-1)[0].split("?")[0] || "",
     balance: appState.address.balance,
-    transactions: appState.address.transactions
+    transactions: appState.address.transactions,
+    equalizer: appState.address.equalizer
   }
 }
 
