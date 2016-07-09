@@ -27,9 +27,11 @@ const Address = React.createClass({
   goHome() {
     this.props.router.goBack();
   },
+  componentWillMount(){
+    this.getAddressAjax(this.props.address)
+  },
   render() {
     const { address, balance, transactions, equalizer } = this.props
-    if (balance === 0) this.getAddressAjax(address)
 
     return (
       <div>
@@ -38,7 +40,7 @@ const Address = React.createClass({
         <button onClick={() => this.goHome()}>Logout</button>
         <p>balance = { balance }</p>
         <AddressForm onSubmit={this.handleSubmit.bind(this)} />
-        <Transactions transactions={ transactions } equalizer={equalizer} />
+        <Transactions transactions={ transactions } equalizer={equalizer} address={address} />
       </div>
     )
   }
