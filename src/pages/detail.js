@@ -5,7 +5,6 @@ class Detail extends Component {
 	render(){
 		return (
 			<div id="detail">
-				<h3>Detail</h3>
 				<Address />
 			</div>
 		)

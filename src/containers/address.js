@@ -35,11 +35,14 @@ const Address = React.createClass({
 
     return (
       <div>
-        <p>hi - address page!</p>
-        <button onClick={() => this.goHome()}>Home</button>
-        <button onClick={() => this.goHome()}>Logout</button>
-        <p>balance = { balance }</p>
-        <AddressForm onSubmit={this.handleSubmit.bind(this)} />
+        <div id="address-header">
+          <button onClick={() => this.goHome()}>Home</button>
+          <button onClick={() => this.goHome()}>Logout</button>
+        </div>
+        <div id="side-bar">
+          <p>balance = { balance }</p>
+          <AddressForm onSubmit={this.handleSubmit.bind(this)} />
+        </div>
         <Transactions transactions={ transactions } equalizer={equalizer} address={address} />
       </div>
     )

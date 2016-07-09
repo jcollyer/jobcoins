@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { TRANSACTION_BAR_WIDTH, TRANSACTION_DATE_POSITION, TRANSACTION_GREEN, TRANSACTION_RED } from '../constants'
 
 const Transactions = React.createClass({
   componentDidUpdate(){
@@ -8,28 +9,27 @@ const Transactions = React.createClass({
   render(){
     const { transactions, equalizer } = this.props
     let leftStyles = {
-      left: transactions.length * 100
+      left: transactions.length * TRANSACTION_BAR_WIDTH
     }
     let baseLineStyles = {
-      width: transactions.length * 100
+      width: transactions.length * TRANSACTION_BAR_WIDTH
     }
     return (
       <div id="transactions">
-        <h3>Transactions</h3>
         {transactions.map((transaction, index) => {
           let positive = transaction.toAddress === this.props.address
-          let bgcolor = positive ? "#00A885" : "#EB6B56"
+          let bgcolor = positive ? TRANSACTION_GREEN : TRANSACTION_RED
           let negitive = positive ? 0 : transaction.amount * equalizer
 
           let transactionStyles = {
             height: transaction.amount * equalizer,
-            left: index * 100,
+            left: index * TRANSACTION_BAR_WIDTH,
             background: bgcolor,
             bottom: -negitive
           }
           let dateStyles = {
-            top: positive ?  "auto" : -32,
-            bottom: positive ? -32 : "auto"
+            top: positive ?  "auto" : TRANSACTION_DATE_POSITION,
+            bottom: positive ? TRANSACTION_DATE_POSITION : "auto"
           }
           let toStyles = {
             background: bgcolor

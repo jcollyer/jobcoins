@@ -7,17 +7,34 @@ p {
   text-align: center;
 }
 
+#address-header {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 60px;
+  background: #333;
+}
+
+#side-bar {
+  background: #ddd;
+  border-right: 1px solid;
+  float: left;
+  height: 100vh;
+  width: 200px;
+}
+
 #transactions {
   animation-name: fade-in;
   animation-iteration-count: 1;
   animation-timing-function: ease-out;
   animation-duration: 0.6s;
   bottom: 0px;
-  height: 500px;
+  float: left;
+  height: 400px;
   margin: 0px auto;
   overflow: scroll;
   position: relative;
-  width: 90%;
+  width: ~"calc(100% - 210px)";
   .transaction {
     position: absolute;
     width: 35px;

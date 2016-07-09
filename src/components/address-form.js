@@ -5,11 +5,16 @@ class AddressForm extends Component {
   render() {
     const { fields: { address, amount }, handleSubmit } = this.props
     return (
-      <form onSubmit={handleSubmit}>
-        <input type="text" {...address} />
-				<input type="number" {...amount} />
-        <button type="submit">Send Jobcoins</button>
-      </form>
+      <div id="send-jobcoin">
+        <h3>Send Jobcoin</h3>
+        <form onSubmit={handleSubmit}>
+          <label>Destination Address</label>
+          <input type="text" {...address} />
+          <label>Amount to Send</label>
+          <input type="number" {...amount} />
+          <button type="submit">Send Jobcoins</button>
+        </form>
+      </div>
     )
   }
 }

@@ -13,7 +13,7 @@ export default function address(state = initialState, action) {
 		case SET_ADDRESS_DATA:
       // get highest amount
       let biggestValue = Math.max.apply(Math,action.data.transactions.map((t)=>{return t.amount}))
-      let baseHeight = 400
+      let baseHeight = 200
       let equate = baseHeight/biggestValue;
       return {
         address: state.address,
