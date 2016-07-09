@@ -13,7 +13,7 @@ const Address = React.createClass({
       .post('http://jobcoin.projecticeland.net/fish-sticks/api/transactions')
       .send({ fromAddress: this.props.address, toAddress: stateData.address, amount: stateData.amount})
       .end(function(err, res){
-        // that.getAddressAjax(this.props.address)
+        that.getAddressAjax(that.props.address)
       });
   },
   getAddressAjax(address) {
