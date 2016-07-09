@@ -10,7 +10,7 @@ body {
 }
 
 p, h2, h3 {
-  margin: 0px;
+  margin: 0px 0px 2px 0px;
   text-align: center;
 }
 
@@ -19,21 +19,63 @@ button, input {
   cursor: pointer;
 }
 
-#address-header {
-  #logo {
-    background: @blue;
-    border-radius: 50%;
-    color: white;
-    cursor: pointer;
-    font-family: 'Pacifico', cursive;
-    font-size: 29px;
-    line-height: 50px;
-    margin: 2px 3px;
-    height: 55px;
-    text-shadow: 1px 0px 0px @blue;
-    transform: rotate(-20deg);
-    width: 55px;
+input[type="text"], input[type="number"] {
+  border: 1px solid @gray;
+  border-radius: 2px;
+  margin: 2px 0px 10px;
+  height: 24px;
+  width: 180px;
+}
+
+.logo {
+  background: @blue;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  font-family: 'Pacifico', cursive;
+  font-size: 29px;
+  line-height: 50px;
+  margin: 2px 3px;
+  height: 55px;
+  text-shadow: 1px 0px 0px @blue;
+  transform: rotate(-20deg);
+  width: 55px;
+}
+
+.form-button {
+  background: @blue;
+  color: white;
+  padding: 10px;
+  width: 180px;
+}
+
+#home {
+  .logo {
+    margin: 60px auto;
+    transform: scale(1.5) rotate(-30deg);
   }
+}
+
+#login {
+  margin: 30px auto;
+  width: 300px;
+  border: 1px solid @gray;
+  #login-form {
+    form {
+      padding: 30px 0px;
+    }
+    h3 {
+      border-bottom: 1px solid #ccc;
+      color: @gray-deep;
+      padding: 20px;
+    }
+    button, input {
+      margin-left: 50px;
+    }
+  }
+}
+
+#address-header {
   button {
     background: @blue;
     color: white;
@@ -80,19 +122,6 @@ button, input {
       input[type="number"] {
         width: 165px;
       }
-    }
-    input[type="text"], input[type="number"] {
-      border: 1px solid @gray;
-      border-radius: 2px;
-      margin: 2px 0px 10px;
-      height: 24px;
-      width: 180px;
-    }
-    button {
-      background: @blue;
-      color: white;
-      padding: 10px;
-      width: 180px;
     }
   }
 }
@@ -154,7 +183,7 @@ button, input {
       bottom: -30px;
       color: white;
       font-size: 12px;
-      padding: 3px 0px;
+      padding: 1px 0px;
       background: @gray-dark;
       width: 35px;
     }

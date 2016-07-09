@@ -38,7 +38,7 @@ const Address = React.createClass({
     return (
       <div>
         <div id="address-header">
-          <div id="logo" onClick={() => this.goHome()}>Job</div>
+          <div className="logo" onClick={() => this.goHome()}>Job</div>
           <button onClick={() => this.goHome()}>Logout</button>
         </div>
         <div id="side-bar">

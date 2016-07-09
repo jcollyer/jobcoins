@@ -5,10 +5,14 @@ class LoginForm extends Component {
   render() {
     const { fields: { address }, handleSubmit } = this.props
     return (
-      <form onSubmit={handleSubmit}>
-        <input type="text" {...address} />
-        <button type="submit">Submit</button>
-      </form>
+      <div id="login-form">
+        <h3>Welcome! Sign In With Your Jobcoin Address</h3>
+        <form onSubmit={handleSubmit}>
+          <p>Jobcoin Address</p>
+          <input type="text" {...address} />
+          <button className="form-button" type="submit">Sign In</button>
+        </form>
+      </div>
     )
   }
 }

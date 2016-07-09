@@ -12,7 +12,7 @@ class AddressForm extends Component {
           <input type="text" {...address} />
           <p>Amount to Send</p>
           <span>$ <input type="number" {...amount} /></span>
-          <button type="submit">Send Jobcoins</button>
+          <button className="form-button" type="submit">Send Jobcoins</button>
         </form>
       </div>
     )
