@@ -1,6 +1,5 @@
 export const SET_ADDRESS = "SET_ADDRESS"
 export const SET_ADDRESS_DATA = "SET_ADDRESS_DATA"
 export const TRANSACTION_BAR_WIDTH = 85
-export const TRANSACTION_DATE_POSITION = -30
 export const TRANSACTION_GREEN = "#00A885"
 export const TRANSACTION_RED = "#EB6B56"

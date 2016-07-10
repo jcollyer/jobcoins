@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { TRANSACTION_BAR_WIDTH, TRANSACTION_DATE_POSITION, TRANSACTION_GREEN, TRANSACTION_RED } from '../constants'
+import { TRANSACTION_BAR_WIDTH, TRANSACTION_GREEN, TRANSACTION_RED } from '../constants'
 import Transaction from '../components/transaction'
 
 const Transactions = React.createClass({
@@ -21,34 +21,24 @@ const Transactions = React.createClass({
     return (
       <div id="transactions">
         {transactions.map((transaction, index) => {
+          
           let positive = transaction.toAddress === this.props.address
-          let bgcolor = positive ? TRANSACTION_GREEN : TRANSACTION_RED
-          let negitive = positive ? 0 : transaction.amount * equalizer
-
           let transactionStyles = {
             height: transaction.amount * equalizer,
             left: index * TRANSACTION_BAR_WIDTH,
-            background: bgcolor,
-            bottom: -negitive
+            background: positive ? TRANSACTION_GREEN : TRANSACTION_RED,
+            bottom: - (positive ? 0 : transaction.amount * equalizer)
           }
-          let dateStyles = {
-            top: positive ?  "auto" : TRANSACTION_DATE_POSITION,
-            bottom: positive ? TRANSACTION_DATE_POSITION : "auto"
-          }
-          let toStyles = {
-            background: bgcolor
-          }
-
 
           return(
             <Transaction
               key={Math.random()}
               transactionStyles={transactionStyles}
-              toStyles={toStyles}
-              dateStyles={dateStyles}
-              transaction={transaction} />
+              transaction={transaction}
+              address={this.props.address} />
           )
          })}
+
          <div id="base-line" style={baseLineStyles}></div>
          <div id="scroll-to" style={scrollToStyles} ></div>
       </div>

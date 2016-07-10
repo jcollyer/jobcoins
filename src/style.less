@@ -148,6 +148,21 @@ input[type="text"], input[type="number"] {
   right: 10px;
   top: 0px;
   width: ~"calc(99% - 210px)";
+
+  .transaction.positive {
+    .t-date {
+      top: auto;
+      bottom: -30px;
+    }
+  }
+
+  .transaction.negative {
+    .t-date {
+      top: -30px;
+      bottom: auto;
+    }
+  }
+
   .transaction {
     position: absolute;
     width: 35px;
@@ -156,6 +171,7 @@ input[type="text"], input[type="number"] {
         opacity: 1;
       }
     }
+
     .t-amount {
       background: @gray-deep;
       border-radius: 50%;
@@ -173,18 +189,31 @@ input[type="text"], input[type="number"] {
         margin-top: 2px;
       }
     }
+
     .t-to {
+      background: @gray-deep;
       color: white;
       font-size: 12px;
-      left: 0px;
+      left: 40px;
       padding: 5px 15px;
       opacity: 0;
       position: absolute;
-      top: 0px;
+      top: -30px;
       transition: opacity 0.5s;
       white-space: nowrap;
       z-index: 1;
+      &:after {
+        content: '';
+        left: -7px;
+        top: 28px;
+        width: 15px;
+        height: 1px;
+        background: @gray-deep;
+        position: absolute;
+        transform: rotate(-75deg);
+      }
     }
+
     .t-date {
       background: @gray-deep;
       bottom: -30px;
@@ -196,6 +225,7 @@ input[type="text"], input[type="number"] {
       width: 35px;
     }
   }
+
   #base-line {
     border-bottom: 1px solid @gray-deep;
     bottom: 0px;
@@ -213,6 +243,7 @@ input[type="text"], input[type="number"] {
       width: 0;
     }
   }
+
   #scroll-to {
     bottom: 0px;
     right: 0px;
