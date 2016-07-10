@@ -5,5 +5,5 @@ export default function App({ children }) {
     <div id="app">
       {children}
     </div>
-  );
-};
+  )
+}

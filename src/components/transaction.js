@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 class Transaction extends Component {
   render() {
     const { transaction, transactionStyles, address } = this.props
+
     return (
       <div style={transactionStyles} className={transaction.toAddress === address ? "transaction positive" : "transaction negative"} >
         <div className="t-amount">

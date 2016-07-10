@@ -10,13 +10,13 @@ import AddressBalance from '../components/address-balance'
 
 const Address = React.createClass({
   handleSubmit() {
-    let that = this
+    let that = this;
     request
       .post('http://jobcoin.projecticeland.net/fish-sticks/api/transactions')
-      .send({ fromAddress: this.props.address, toAddress: this.props.form.login.address.value, amount: this.props.form.login.amount.value})
+      .send({ fromAddress: this.props.params.addressId, toAddress: this.props.form.login.address.value, amount: this.props.form.login.amount.value})
       .end(function(err, res){
-        that.getAddressAjax(that.props.address)
-      });
+        that.getAddressAjax(that.props.params.addressId)
+      })
   },
   getAddressAjax(address) {
     let that = this
@@ -24,16 +24,16 @@ const Address = React.createClass({
       .get('http://jobcoin.projecticeland.net/fish-sticks/api/addresses/'+address)
       .end(function(err, res){
         that.props.setAddressData(res.body)
-      });
+      })
   },
   goHome() {
-    this.props.router.goBack();
+    this.props.router.goBack()
   },
-  componentWillMount(){
-    this.getAddressAjax(this.props.address)
+  componentDidMount(){
+    this.getAddressAjax(this.props.routeParams.addressId)
   },
   render() {
-    const { address, balance, transactions, equalizer, form } = this.props
+    const { balance, transactions, equalizer, form, params } = this.props
     return (
       <div>
         <div id="address-header">
@@ -44,7 +44,7 @@ const Address = React.createClass({
           <AddressBalance balance={balance} />
           <SendForm onSubmit={this.handleSubmit} />
         </div>
-        <Transactions transactions={ transactions } equalizer={equalizer} address={address} />
+        <Transactions transactions={transactions} equalizer={equalizer} address={params.addressId} />
       </div>
     )
   }
@@ -52,7 +52,6 @@ const Address = React.createClass({
 
 const mapStateToProps = (appState) => {
   return {
-    address: appState.address.address || document.cookie.substr(document.cookie.indexOf("address=")).split("=")[1],
     balance: appState.address.balance,
     transactions: appState.address.transactions,
     equalizer: appState.address.equalizer,

@@ -7,9 +7,8 @@ import LoginForm from '../components/login-form'
 
 const Login = React.createClass({
   handleSubmit() {
-    let newAddress = this.props.form.login.address.value;
+    let newAddress = this.props.form.login.address.value
     this.props.setAddress(newAddress)
-    document.cookie = "address="+newAddress
     this.props.router.push('addresses/'+newAddress)
   },
   render() {

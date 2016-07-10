@@ -7,4 +7,4 @@ const rootReducer = combineReducers({
   form: formReducer
 })
 
-export default rootReducer;
+export default rootReducer
