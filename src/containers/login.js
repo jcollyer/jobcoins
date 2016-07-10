@@ -6,14 +6,18 @@ import { setAddress } from '../actions/address'
 import LoginForm from '../components/login-form'
 
 const Login = React.createClass({
-  handleSubmit(stateData) {
-    this.props.setAddress(stateData.address)
-    this.props.router.push('addresses/'+stateData.address)
+  handleSubmit() {
+    let newAddress = this.props.form.login.address.value;
+    this.props.setAddress(newAddress)
+    document.cookie = "address="+newAddress
+    this.props.router.push('addresses/'+newAddress)
   },
   render() {
+    const { address, form } = this.props
     return (
       <div id="login">
-        <LoginForm onSubmit={this.handleSubmit.bind(this)} />
+        <div className="logo">Job</div>
+        <LoginForm onSubmit={this.handleSubmit} />
       </div>
     )
   }
@@ -21,7 +25,8 @@ const Login = React.createClass({
 
 const mapStateToProps = (appState) => {
   return {
-    address: appState.address
+    address: appState.address,
+    form: appState.form
   }
 }
 

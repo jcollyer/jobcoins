@@ -9,11 +9,11 @@ import AddressBalance from '../components/address-balance'
 
 
 const Address = React.createClass({
-  handleSubmit(stateData) {
+  handleSubmit() {
     let that = this
     request
       .post('http://jobcoin.projecticeland.net/fish-sticks/api/transactions')
-      .send({ fromAddress: this.props.address, toAddress: stateData.address, amount: stateData.amount})
+      .send({ fromAddress: this.props.address, toAddress: this.props.form.login.address.value, amount: this.props.form.login.amount.value})
       .end(function(err, res){
         that.getAddressAjax(that.props.address)
       });
@@ -33,8 +33,7 @@ const Address = React.createClass({
     this.getAddressAjax(this.props.address)
   },
   render() {
-    const { address, balance, transactions, equalizer } = this.props
-
+    const { address, balance, transactions, equalizer, form } = this.props
     return (
       <div>
         <div id="address-header">
@@ -43,7 +42,7 @@ const Address = React.createClass({
         </div>
         <div id="side-bar">
           <AddressBalance balance={balance} />
-          <SendForm onSubmit={this.handleSubmit.bind(this)} />
+          <SendForm onSubmit={this.handleSubmit} />
         </div>
         <Transactions transactions={ transactions } equalizer={equalizer} address={address} />
       </div>
@@ -53,10 +52,11 @@ const Address = React.createClass({
 
 const mapStateToProps = (appState) => {
   return {
-    address: window.location.href.split("/").slice(-1)[0].split("?")[0] || "",
+    address: appState.address.address || document.cookie.substr(document.cookie.indexOf("address=")).split("=")[1],
     balance: appState.address.balance,
     transactions: appState.address.transactions,
-    equalizer: appState.address.equalizer
+    equalizer: appState.address.equalizer,
+    form: appState.form
   }
 }
 

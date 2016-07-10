@@ -3,6 +3,7 @@
 @gray-dark: #aaa;
 @gray-deep: #888;
 @blue: #3D8EB9;
+@blue-hover: @blue + #111;
 
 body {
   font-family: 'Josefin Sans', sans-serif;
@@ -24,7 +25,7 @@ input[type="text"], input[type="number"] {
   border-radius: 2px;
   margin: 2px 0px 10px;
   height: 24px;
-  width: 180px;
+  width: 175px;
 }
 
 .logo {
@@ -47,26 +48,35 @@ input[type="text"], input[type="number"] {
   color: white;
   padding: 10px;
   width: 180px;
-}
-
-#home {
-  .logo {
-    margin: 60px auto;
-    transform: scale(1.5) rotate(-30deg);
+  transition: background 0.4s;
+  &:hover {
+    background: @blue-hover;
   }
 }
 
 #login {
   margin: 30px auto;
   width: 300px;
-  border: 1px solid @gray;
+
+  .logo {
+    margin: 60px auto;
+    transform: scale(1.5) rotate(-30deg);
+  }
+
   #login-form {
     form {
+      border: 1px solid @gray;
       padding: 30px 0px;
     }
-    h3 {
-      border-bottom: 1px solid #ccc;
+    p {
       color: @gray-deep;
+    }
+    h3 {
+      border-left: 1px solid @gray;
+      border-right: 1px solid @gray;
+      border-top: 1px solid @gray;
+      color: @gray-deep;
+      margin: 0px;
       padding: 20px;
     }
     button, input {
@@ -147,8 +157,9 @@ input[type="text"], input[type="number"] {
       }
     }
     .t-amount {
-      background: inherit;
+      background: @gray-deep;
       border-radius: 50%;
+      font-family: sans-serif;
       font-size: 11px;
       height: 15px;
       margin: auto;
@@ -156,19 +167,15 @@ input[type="text"], input[type="number"] {
       right: -6px;
       top: 0px;
       width: 15px;
-      span {
+      p {
         color: @gray-deep;
-        left: 20px;
-        opacity: 1;
-        position: absolute;
-        transition: opacity 0.3s;
-        &:hover {
-          opacity: 1;
-        }
+        width: 60px;
+        margin-top: 2px;
       }
     }
     .t-to {
       color: white;
+      font-size: 12px;
       left: 0px;
       padding: 5px 15px;
       opacity: 0;
@@ -179,26 +186,39 @@ input[type="text"], input[type="number"] {
       z-index: 1;
     }
     .t-date {
-      position: absolute;
+      background: @gray-deep;
       bottom: -30px;
       color: white;
-      font-size: 12px;
+      font-family: sans-serif;
+      font-size: 10px;
       padding: 1px 0px;
-      background: @gray-dark;
+      position: absolute;
       width: 35px;
     }
   }
   #base-line {
-    border-bottom: 1px solid @gray-dark;
+    border-bottom: 1px solid @gray-deep;
     bottom: 0px;
     position: absolute;
     width: 100%;
+    &:after {
+      border-bottom: 5px solid transparent;
+      border-left: 5px solid @gray-deep;
+      border-top: 5px solid transparent;
+      content: '';
+      height: 0;
+      position: absolute;
+      right: -6px;
+      top: -5px;
+      width: 0;
+    }
   }
   #scroll-to {
     bottom: 0px;
-    height: 3px;
+    right: 0px;
+    height: 1px;
     position: absolute;
-    width: 30px;
+    width: 1px;
   }
 }
 

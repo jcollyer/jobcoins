@@ -1,18 +1,22 @@
 import React, { Component } from 'react'
 import { TRANSACTION_BAR_WIDTH, TRANSACTION_DATE_POSITION, TRANSACTION_GREEN, TRANSACTION_RED } from '../constants'
+import Transaction from '../components/transaction'
 
 const Transactions = React.createClass({
-  componentDidUpdate(){
+  shouldComponentUpdate(nextProps, nextState){
+    return nextProps.transactions.length !== this.props.transactions.length
+  },
+  componentDidUpdate() {
     document.getElementById("scroll-to").style.left = transactions.scrollWidth+"px"
     setTimeout(()=>{document.getElementById("scroll-to").scrollIntoView()},10)
   },
   render(){
     const { transactions, equalizer } = this.props
-    let leftStyles = {
-      left: transactions.length * TRANSACTION_BAR_WIDTH
-    }
     let baseLineStyles = {
       width: transactions.length * TRANSACTION_BAR_WIDTH
+    }
+    let scrollToStyles = {
+      left: transactions.length * TRANSACTION_BAR_WIDTH
     }
     return (
       <div id="transactions">
@@ -35,21 +39,18 @@ const Transactions = React.createClass({
             background: bgcolor
           }
 
+
           return(
-            <div className="transaction" key={Math.random()} style={transactionStyles} >
-              <div className="t-amount">
-                <span>{transaction.amount}</span>
-              </div>
-              <div className="t-to" style={toStyles}><b>To - </b>{transaction.toAddress}</div>
-              <div className="t-date" style={dateStyles}>
-                <p>{transaction.timestamp.replace(/-/g,"/").substr(5,11).split("T")[0]}</p>
-                <p><b>{transaction.timestamp.replace(/-/g,"/").substr(5,11).split("T")[1]}</b></p>
-              </div>
-            </div>
+            <Transaction
+              key={Math.random()}
+              transactionStyles={transactionStyles}
+              toStyles={toStyles}
+              dateStyles={dateStyles}
+              transaction={transaction} />
           )
          })}
          <div id="base-line" style={baseLineStyles}></div>
-         <div id="scroll-to" style={leftStyles}></div>
+         <div id="scroll-to" style={scrollToStyles} ></div>
       </div>
     )
   }
